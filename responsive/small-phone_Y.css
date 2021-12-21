@@ -1,0 +1,172 @@
+.menu {
+   width: 40px;
+   height: 40px;
+   top: 0;
+   right: 15px;
+   border-radius: 40px;
+   display: flex !important;
+}
+
+.toggle-menu-box:checked ~ .menu {
+   height: 190px;
+}
+
+.menu-names-wrap {
+   display: none !important;
+}
+
+.menu-item {
+   width: 40px;
+   height: 40px;
+   flex: 0 0 40px;
+}
+
+.menu-icon {
+   font-size: 14px;
+}
+
+.menu-item:first-child {
+   margin-bottom: 10px;
+}
+
+.menu-item + .menu-item {
+   margin-bottom: 10px;
+}
+
+/* Menu main */
+
+/* Volume */
+.volume {
+   top: 20px;
+   left: 15px;
+   border-radius: 15px;
+   display: none;
+   flex-direction: column;
+}
+
+.volume::before,
+.volume::after {
+   inset: -3px;
+   border-radius: 18px;
+}
+
+.volume-item {
+   width: 50px;
+   height: 30px;
+   font-size: 10px;
+}
+
+.volume-item:first-child {
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;
+}
+
+.volume-item:last-child {
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
+}
+
+.volume-icon {
+   margin-left: 5px;
+}
+
+.escape-volume {
+   font-size: 14px;
+}
+
+/* Menu *//* Menu *//* Menu *//* Menu *//* Menu */
+
+/* Main *//* Main *//* Main *//* Main *//* Main *//* Main */
+.player {
+   width: 100%;
+}
+
+.dashboard {
+   width: 100%;
+   padding: 10px;
+   border-bottom: 1px solid #ebebeb;
+}
+
+/* Main *//* Main *//* Main *//* Main *//* Main *//* Main */
+
+/* Header *//* Header *//* Header *//* Header *//* Header */
+.song-title {
+   margin-bottom: 10px;
+}
+
+.song-playing {
+   font-size: 10px;
+   margin-bottom: 2px;
+}
+
+.song-name {
+   font-size: 12px;
+}
+
+.cd {
+   width: 100% !important;
+   opacity: 1 !important;
+   margin: auto;
+}
+
+.cd-thumb {
+   width: 40% !important;
+   padding-top: 40% !important;
+}
+
+/* Header *//* Header *//* Header *//* Header *//* Header */
+
+/* Control *//* Control *//* Control *//* Control */
+.control {
+   padding: 10px 0;
+}
+
+.control .btn {
+   padding: 10px;
+   margin-top: 10px;
+   font-size: 16px;
+}
+
+.control .btn-toggle-play {
+   padding: 15px;
+   font-size: 20px;
+}
+
+.progress {
+   height: 10px;
+}
+
+.progress::-webkit-slider-thumb {
+   height: 10px;
+   width: 30px;
+}
+
+/* Control *//* Control *//* Control *//* Control */
+
+/* Playlist *//* Playlist *//* Playlist *//* Playlist */
+.playlist {
+   padding: 12px;
+}
+
+.song {
+   padding: 8px 0;
+   height: 70px;
+   margin-bottom: 12px;
+}
+
+.song .thumb {
+   margin-left: 10px;
+}
+
+.song .body {
+   padding: 0 10px;
+}
+
+.song .title {
+   font-size: 16px;
+   left: 10px;
+}
+
+.song .author {
+   font-size: 14px;
+}

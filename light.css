@@ -1,0 +1,126 @@
+:root {
+   --primary-color: #0984e3;
+   --text-color: #444;
+}
+
+body {
+   transition: 0.2s linear;
+   background-color: #74b9ff;
+}
+
+.menu {
+   transition: 0.2s linear;
+   background-color: #0984e3;
+}
+
+.volume-item {
+   transition: 0.2s linear;
+   background-color: #0984e3;
+}
+
+.volume-item:hover {
+   transition: 0.2s linear;
+   background-color: #74b9ff !important;
+}
+
+.volume-item.active {
+   transition: 0.2s linear;
+   background-color: #487eb0;
+}
+
+.menu-name {
+   transition: 0.2s linear;
+   color: white;
+}
+
+.menu-name.active {
+   transition: 0.2s linear;
+   text-shadow: 
+   0 0 20px #487eb0,
+   0 0 40px #487eb0;
+}
+
+.dashboard {
+   transition: 0.2s linear;
+   background-color: #74b9ff;
+}
+
+.cd-thumb {
+   transition: 0.2s linear;
+   border: 2px solid #555;
+}
+
+.song-name,
+.song-playing {
+   transition: 0.2s linear;
+   color: white;
+}
+
+.progress::-webkit-slider-thumb {
+   transition: 0.2s linear;
+   background-color: #0984e3;
+}
+
+.control .btn {
+   transition: 0.2s linear;
+   color: white;
+   text-shadow: 2px 2px 0px #0984e3;
+}
+
+.control .btn-toggle-play  {
+   transition: 0.2s linear;
+   color: white;
+   text-shadow: transparent !important;
+}
+
+.playlist,
+.playlist1 {
+   transition: 0.2s linear;
+   background-color: #74b9ff;
+}
+
+.song {
+   transition: 0.2s linear;
+   background-color: white;
+}
+
+/* root */
+:root {
+   --primary-color: #0099cc;
+   --text-color: #333;
+}
+
+.control .btn.active {
+   transition: 0.2s linear;
+   color: var(--primary-color) !important;
+}
+
+.control .btn-toggle-play {
+   transition: 0.2s linear;
+   background-color: var(--primary-color);
+}
+
+.song.active {
+   transition: 0.2s linear;
+   background-color: var(--primary-color);
+}
+
+.song .title {
+   transition: 0.2s linear;
+   color: var(--text-color);
+}
+
+.song.active .author,
+.song.active .title {
+   transition: 0.2s linear;
+   color: white !important;
+}
+
+/* icon */
+.moon-icon {
+   display: none;
+}
+
+.sun-icon {
+   display: block;
+}

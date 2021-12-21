@@ -1,0 +1,118 @@
+body {
+   background-color: #0e1538;
+}
+
+.menu {
+   transition: 0.2s linear;
+   background-color: #0099cc;
+}
+
+.volume-item {
+   transition: 0.2s linear;
+   background-color: #0099cc;
+}
+
+.volume-item:hover {
+   transition: 0.2s linear;
+   background-color: #81ecec !important;
+}
+
+.volume-item.active {
+   transition: 0.2s linear;
+   background-color: #0c8bb6;
+}
+
+.menu-name {
+   transition: 0.2s linear;
+   color: #fff;
+}
+
+.menu-name.active {
+   transition: 0.2s linear;
+   text-shadow: 
+   0 0 10px white,
+   0 0 20px white;
+}
+
+.dashboard {
+   transition: 0.2s linear;
+   background-color: #1e2d76;
+}
+
+.cd-thumb {
+   transition: 0.2s linear;
+   border: 2px solid white;
+}
+
+.song-name,
+.song-playing {
+   transition: 0.2s linear;
+   color: white;
+}
+
+.progress::-webkit-slider-thumb {
+   transition: 0.2s linear;
+   background-color: #0099cc;
+}
+
+.control .btn {
+   transition: 0.2s linear;
+   color: white;
+}
+
+.control .btn-toggle-play  {
+   transition: 0.2s linear;
+   color: white;
+}
+
+.playlist,
+.playlist1 {
+   transition: 0.2s linear;
+   background-color: #1e2d76;
+}
+
+.song {
+   transition: 0.2s linear;
+   background-color: white;
+}
+
+/* root */
+:root {
+   --primary-color: #0099cc;
+   --text-color: #333;
+}
+
+.control .btn.active {
+   transition: 0.2s linear;
+   color: var(--primary-color) !important;
+}
+
+.control .btn-toggle-play {
+   transition: 0.2s linear;
+   background-color: var(--primary-color);
+}
+
+.song.active {
+   transition: 0.2s linear;
+   background-color: var(--primary-color);
+}
+
+.song .title {
+   transition: 0.2s linear;
+   color: var(--text-color);
+}
+
+.song.active .author,
+.song.active .title {
+   transition: 0.2s linear;
+   color: white !important;
+}
+
+/* icon */
+.moon-icon {
+   display: block;
+}
+
+.sun-icon {
+   display: none;
+}

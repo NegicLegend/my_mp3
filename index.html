@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,user-scalable=0">
+   <title>Hololive mp3</title>
+   <link rel="icon" href="./img/logo.webp" type="image/x-icon" />
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous" />
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet">
+
+      <link rel="stylesheet" href="reponsive.css">
+      <link rel="stylesheet" id="responsive" href="reponsive-size.css">
+      <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" id="theme" href="dark.css">
+</head>
+
+<body onresize="changeSize(); responsive(); document.getElementById('refesh').click()">
+   <a href="" id="refesh"></a>
+   <div class="load-wrap">
+      <div class="loader">
+         <span style="--i:1;" class="load-dot"></span>
+         <span style="--i:2;" class="load-dot"></span>
+         <span style="--i:3;" class="load-dot"></span>
+         <span style="--i:4;" class="load-dot"></span>
+         <span style="--i:5;" class="load-dot"></span>
+         <span style="--i:6;" class="load-dot"></span>
+         <span style="--i:7;" class="load-dot"></span>
+         <span style="--i:8;" class="load-dot"></span>
+         <span style="--i:9;" class="load-dot"></span>
+         <span style="--i:10;" class="load-dot"></span>
+         <span style="--i:11;" class="load-dot"></span>
+         <span style="--i:12;" class="load-dot"></span>
+         <span style="--i:13;" class="load-dot"></span>
+         <span style="--i:14;" class="load-dot"></span>
+         <span style="--i:15;" class="load-dot"></span>
+         <span style="--i:16;" class="load-dot"></span>
+         <span style="--i:17;" class="load-dot"></span>
+         <span style="--i:18;" class="load-dot"></span>
+         <span style="--i:19;" class="load-dot"></span>
+         <span style="--i:20;" class="load-dot"></span>
+      </div>
+   </div>
+   <div id="x"></div>
+   <div id="y"></div>
+   <a href="https://www.youtube.com/watch?v=6G7ETEx8I7U" class="rick"></a>
+   <div class="volume">
+      <div class="volume-item volume-control">
+         <p>0% <i class="fas fa-volume-mute volume-icon"></i></p>
+      </div>
+      <div class="volume-item volume-control">
+         <p>20% <i class="fas fa-volume-up volume-icon"></i></i></p>
+      </div>
+      <div class="volume-item volume-control">
+         <p>40% <i class="fas fa-volume-up volume-icon"></i></i></p>
+      </div>
+      <div class="volume-item volume-control">
+         <p>60% <i class="fas fa-volume-up volume-icon"></i></i></p>
+      </div>
+      <div class="volume-item volume-control">
+         <p>80% <i class="fas fa-volume-up volume-icon"></i></p>
+      </div>
+      <div class="volume-item volume-control active">
+         <p>100% <i class="fas fa-volume-up volume-icon"></i></p>
+      </div>
+      <div class="volume-item escape-volume">
+         <i class="fas fa-times"></i>
+      </div>
+   </div>
+   <div class="player">
+      <div class="dashboard" onresize="changeSize()">
+         <header class="song-title">
+            <h4 class="song-playing">Now playing:</h4>
+            <h2 class="song-name"></h2>
+         </header>
+
+         <div id="dashY"></div>
+
+         <div class="cd">
+            <div class="cd-thumb"></div>
+            <input type="checkbox" hidden id="menu-box" class="toggle-menu-box">
+            <div class="menu">
+               <label for="menu-box" class="menu-item menu-btn">
+                  <i class="fas fa-bars menu-icon"></i>
+               </label>
+               <div class="menu-item volume-btn">
+                  <i class="fas fa-volume-up menu-icon"></i>
+               </div>
+               <div class="menu-item rick-btn">
+                  <i class="fas fa-compact-disc menu-icon"></i>
+               </div>
+               <div class="menu-item change-theme">
+                  <i class="fas fa-moon menu-icon moon-icon"></i>
+                  <i class="fas fa-sun menu-icon sun-icon"></i>
+               </div>
+            </div>
+            <div class="menu-names-wrap">
+               <p class="menu-name active"></p>
+               <p class="menu-name">Volume</p>
+               <p class="menu-name">More songs</p>
+               <p class="menu-name">Theme</p>
+            </div>
+         </div>
+
+         <div class="control">
+            <div class="btn btn-repeat">
+               <i class="fas fa-redo"></i>
+            </div>
+            <div class="btn btn-prev">
+               <i class="fas fa-step-backward"></i>
+            </div>
+            <div class="btn btn-toggle-play">
+               <i class="fas fa-pause icon-pause"></i>
+               <i class="fas fa-play icon-play"></i>
+            </div>
+            <div class="btn btn-next">
+               <i class="fas fa-step-forward"></i>
+            </div>
+            <div class="btn btn-random">
+               <i class="fas fa-random"></i>
+            </div>
+         </div>
+
+         <div class="time">
+            <p class="current-time">0:00</p>
+            <p class="time-duration">0:00</p>
+         </div>
+
+         <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
+         <audio id="audio" src=""></audio>
+      </div>
+   </div>
+   <div class="playlist"></div>
+</body>
+
+<script src="reponsive.js"></script>
+<script>
+   (function() {
+      setTimeout(function () {
+         document.querySelector('.load-wrap').style.display = 'none';
+      }, 5000)
+   })()
+</script>
+<script>
+   (function() {
+      var a = 0;
+      var menu = document.querySelector('.menu');
+      const menuBtn = document.querySelector('.menu-btn');
+      menu.addEventListener('click', function(e) {
+         if(e.target.closest('.rick-btn')) {
+            document.querySelector('.rick').click();
+         }
+      })
+      document.querySelector('.menu-btn').addEventListener('click', function() {
+         a++;
+         if(a % 2 == 0 && a != 0) {
+            document.querySelector('.escape-volume').click();
+         }
+      })
+   })()
+</script>
+<script src="menu.js"></script>
+<script src="size-control.js"></script>
+<script src="time.js"></script>
+<script src="main.js"></script>
+<script>
+   function changeSize() {
+      const dashBoard = document.querySelector('.dashboard');
+      const playList = document.querySelector('.playlist');
+      playList.style.marginTop = dashBoard.offsetHeight + 'px';
+
+      const thumb = document.querySelectorAll('.thumb');
+      for (var i = 0; i < thumb.length; i++) {
+         thumb[i].style.width = thumb[i].offsetHeight + 'px';
+      }
+   }
+   changeSize()
+</script>
+<script>
+   function showtimeCurrent() {
+      var audio = document.querySelector('#audio');
+
+      var loadTime = setInterval(function () {
+         var durationTimeText = document.querySelector('.time-duration')
+         var duration = audio.duration;
+         var durationHours = Math.floor(duration / 3600);
+         var durationMinutes = Math.floor(duration / 60) % 60;
+         var b = duration - durationHours * 3600 - durationMinutes * 60;
+         var durationSeconds = Math.floor(b);
+
+         if (!isNaN(durationSeconds)) {
+            if (durationHours > 0) {
+               if (durationMinutes > 9) {
+                  if (durationSeconds > 9) {
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:${durationSeconds}</p>`;
+                  } else {
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:0${durationSeconds}</p>`;
+                  }
+               } else {
+                  if (durationSeconds > 9) {
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:${durationSeconds}</p>`;
+                  } else {
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:0${durationSeconds}</p>`;
+                  }
+               }
+            } else if (durationMinutes > 0) {
+               if (durationSeconds < 10) {
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:0${durationSeconds}</p>`;
+               } else {
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:${durationSeconds}</p>`;
+               }
+            } else {
+               if (durationSeconds < 10) {
+                  durationTimeText.innerHTML = `<p class="duration-time">0${durationSeconds}</p>`;
+               } else {
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationSeconds}</p>`;
+               }
+            }
+         }
+      }, 100)
+
+      setTimeout(function () {
+         clearInterval(loadTime)
+      }, 10000)
+   }
+   showtimeCurrent();
+</script>
+<script src="playerTheme.js"></script>
+<script>
+   changeTheme({
+      idCSS: 'theme',
+      changeBtn: '.change-theme',
+      darkTheme: 'dark.css',
+      lightTheme: 'light.css',
+      defaultTheme: 'dark.css'
+   })
+</script>
+<script src="volumeControl.js"></script>
+
+</html>

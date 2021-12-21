@@ -1,0 +1,192 @@
+.menu {
+   width: 80px;
+   height: 80px;
+   top: 0;
+   right: 0;
+   border-radius: 80px;
+   display: flex !important;
+}
+
+.toggle-menu-box:checked ~ .menu {
+   height: 410px;
+}
+
+.menu-names-wrap {
+   height: max-content;
+   width: 80px;
+   right: 1000px;
+   display: block !important;
+}
+
+.toggle-menu-box:checked ~ .menu-names-wrap {
+   right: 140px;
+}
+
+.menu-item {
+   width: 80px;
+   height: 80px;
+   flex: 0 0 80px;
+}
+
+.menu-name {
+   height: 80px;
+   line-height: 80px;
+   font-size: 22px;
+}
+
+.menu-icon {
+   font-size: 26px;
+}
+
+.menu-name:first-child,
+.menu-item:first-child {
+   margin-bottom: 30px;
+}
+
+.menu-name + .menu-name,
+.menu-item + .menu-item {
+   margin-bottom: 30px;
+}
+
+/* Menu main */
+
+/* Volume */
+.volume {
+   top: 40px;
+   border-radius: 30px;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.volume::before,
+.volume::after {
+   inset: -5px;
+   border-radius: 35px;
+}
+
+.volume-item {
+   width: 150px;
+   height: 100px;
+   font-size: 24px;
+}
+
+.volume-item:first-child {
+   border-top-left-radius: 32px;
+   border-bottom-left-radius: 32px;
+}
+
+.volume-item:last-child {
+   border-top-right-radius: 32px;
+   border-bottom-right-radius: 32px;
+}
+
+.volume-icon {
+   margin-left: 10px;
+}
+
+.escape-volume {
+   font-size: 40px;
+}
+
+/* Menu *//* Menu *//* Menu *//* Menu *//* Menu */
+
+/* Main *//* Main *//* Main *//* Main *//* Main */
+.player {
+   width: 100%;
+}
+
+.dashboard {
+   padding: 30px;
+   border-right: 1px dashed #ebebeb;
+   width: 50%;
+   left: 0;
+   bottom: 0;
+}
+
+/* Main *//* Main *//* Main *//* Main *//* Main *//* Main */
+
+/* Header *//* Header *//* Header *//* Header *//* Header */
+.song-title {
+   margin-bottom: 20px;
+}
+
+.song-playing {
+   font-size: 30px;
+   margin-bottom: 10px;
+}
+
+.song-name {
+   font-size: 36px;
+   line-height: 40px;
+}
+
+.cd {
+   width: 100% !important;
+   opacity: 1 !important;
+}
+
+.cd-thumb {
+   width: 45% !important;
+   padding-top: 45%;
+}
+
+/* Header *//* Header *//* Header *//* Header *//* Header */
+
+/* Control *//* Control *//* Control *//* Control */
+.control {
+   padding: 20px 0;
+}
+
+.control .btn {
+   padding: 20px;
+   font-size: 40px;
+}
+
+.control .btn-toggle-play {
+   padding: 30px;
+   font-size: 50px;
+}
+
+.progress {
+   height: 15px;
+}
+
+.progress::-webkit-slider-thumb {
+   height: 15px;
+   width: 40px;
+}
+
+/* Control *//* Control *//* Control *//* Control */
+
+/* Playlist *//* Playlist *//* Playlist *//* Playlist */
+.playlist {
+   padding: 20px;
+   margin-top: 0 !important;
+   margin-left: auto;
+   width: 50vw !important;
+}
+
+.song {
+   padding: 12px 0;
+   height: 120px;
+   margin-bottom: 20px;
+}
+
+.song .thumb {
+   margin-left: 16px;
+}
+
+.song .body {
+   padding: 0 20px;
+}
+
+.song .title {
+   font-size: 30px;
+   left: 20px;
+}
+
+.song .author {
+   font-size: 24px;
+}
+
+/* Playlist *//* Playlist *//* Playlist *//* Playlist */

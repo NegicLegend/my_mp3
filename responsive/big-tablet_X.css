@@ -1,0 +1,181 @@
+.menu {
+   width: 80px;
+   height: 80px;
+   top: 0;
+   right: 0;
+   border-radius: 80px;
+   display: flex !important;
+}
+
+.toggle-menu-box:checked ~ .menu {
+   height: max-content;
+}
+
+.menu-names-wrap {
+   height: max-content;
+   width: 80px;
+   right: 700px;
+   display: none !important;
+}
+
+.menu-item {
+   width: 80px;
+   height: 80px;
+   flex: 0 0 80px;
+}
+
+.menu-icon {
+   font-size: 30px;
+}
+
+.menu-item:first-child {
+   margin-bottom: 50px;
+}
+
+.menu-item + .menu-item {
+   margin-bottom: 50px;
+}
+
+/* Menu main */
+
+/* Volume */
+.volume {
+   top: 40px;
+   border-radius: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   justify-content: center;
+   align-items: center;
+}
+
+.volume::before,
+.volume::after {
+   inset: -3px;
+   border-radius: 23px;
+}
+
+.volume-item {
+   width: 120px;
+   height: 80px;
+   font-size: 20px;
+}
+
+.volume-item:first-child {
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+
+.volume-item:last-child {
+   border-top-right-radius: 20px;
+   border-bottom-right-radius: 20px;
+}
+
+.volume-icon {
+   margin-left: 5px;
+}
+
+.escape-volume {
+   font-size: 30px;
+}
+
+/* Menu *//* Menu *//* Menu *//* Menu *//* Menu */
+
+/* Main *//* Main *//* Main *//* Main *//* Main *//* Main */
+.player {
+   width: 100%;
+   display: flex;
+}
+
+.dashboard {
+   padding: 16px;
+   width: 50%;
+   border-right: 1px dashed #ebebeb;
+   left: 0;
+   bottom: 0;
+}
+
+/* Main *//* Main *//* Main *//* Main *//* Main *//* Main */
+
+/* Header *//* Header *//* Header *//* Header *//* Header */
+.song-title {
+   margin-bottom: 10px;
+}
+
+.song-playing {
+   font-size: 22px;
+   margin-bottom: 10px;
+}
+
+.song-name {
+   font-size: 26px;
+}
+
+.cd {
+   width: 100% !important;
+   opacity: 1 !important;
+}
+
+.cd-thumb {
+   width: 80% !important;
+   padding-top: 80%;
+}
+
+/* Header *//* Header *//* Header *//* Header *//* Header */
+
+/* Control *//* Control *//* Control *//* Control */
+.control {
+   padding: 20px 0;
+}
+
+.control .btn {
+   padding: 30px;
+   font-size: 30px;
+}
+
+.control .btn-toggle-play {
+   padding: 30px;
+   font-size: 36px;
+}
+
+.progress {
+   height: 15px;
+   margin-bottom: 20px;
+}
+
+.progress::-webkit-slider-thumb {
+   height: 15px;
+   width: 40px;
+}
+
+/* Control *//* Control *//* Control *//* Control */
+
+/* Playlist *//* Playlist *//* Playlist *//* Playlist */
+.playlist {
+   padding: 20px;
+   margin-top: 0 !important;
+   margin-left: auto;
+   width: 50vw !important;
+}
+
+.song {
+   padding: 8px 0;
+   height: 80px;
+   margin-bottom: 20px;
+}
+
+.song .thumb {
+   margin-left: 16px;
+}
+
+.song .body {
+   padding: 0 16px;
+}
+
+.song .title {
+   font-size: 18px;
+   left: 16px;
+}
+
+.song .author {
+   font-size: 16px;
+}
