@@ -15,7 +15,7 @@
    .menu-names-wrap {
       height: max-content;
       width: 80px;
-      right: 1000px;
+      right: 1500px;
       display: block !important;
    }
 
@@ -52,41 +52,35 @@
    /* Menu main */
 
    /* Volume */
-   .volume {
-      top: 40px;
-      border-radius: 30px;
-      left: 50%;
-      transform: translateX(-50%);
+   .volume-wrap {
+      bottom: 50%;
+      left: calc(50% - 10px);
+      width: 40px;
+      height: 160px;
    }
 
-   .volume::before,
-   .volume::after {
-      inset: -5px;
-      border-radius: 35px;
+   .volume-wrap::before {
+      left: 10px;
+      bottom: 30px;
+      width: 20px;
+      height: 120px;
    }
 
-   .volume-item {
-      width: 150px;
-      height: 100px;
-      font-size: 24px;
+   .volume-range {
+      width: 20px;
+      height: 120px;
+      left: 10px;
+      bottom: 30px;
    }
 
-   .volume-item:first-child {
-      border-top-left-radius: 32px;
-      border-bottom-left-radius: 32px;
+   .volume-range::before {
+      width: 20px;
+      height: 20px;
    }
 
-   .volume-item:last-child {
-      border-top-right-radius: 32px;
-      border-bottom-right-radius: 32px;
-   }
-
-   .volume-icon {
-      margin-left: 10px;
-   }
-
-   .escape-volume {
-      font-size: 40px;
+   .volume-number {
+      bottom: 5px;
+      font-size: 14px;
    }
 
    /* Menu *//* Menu *//* Menu *//* Menu *//* Menu */

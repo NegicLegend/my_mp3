@@ -1,38 +1,60 @@
 (function() {
    const audio = document.getElementById('audio');
-   const volumeBtn = document.querySelector('.volume-btn');
-   const volume = document.querySelector('.volume');
    audio.volume = 1;
-   const volumes = document.querySelectorAll('.volume-control');
-   for(var i = 0; i < volumes.length; i++) {
-      (function(i) {
-         volumes[i].addEventListener('click', function() {
-            audio.volume = i * 2 / 10;
-            document.querySelector('.volume-control.active').classList.remove('active');
-            volumes[i].classList.add('active');
+
+   const moreVolume = document.querySelector('.volume-increase');
+   const lessVolume = document.querySelector('.volume-decrease');
+   const volumeRange = document.querySelector('.volume-range');
+   const number = document.querySelector('.volume-number');
+
+   moreVolume.addEventListener('click', () => {
+      var promise = new Promise(
+         function(resolve, reject) {
+            resolve()
+         }
+      );
+
+      promise
+         .then(function() {
+            if(audio.volume < 1) {
+               audio.volume = audio.volume + 0.2;
+            }else {
+               audio.volume = 1;
+            }
          })
-      })(i)
-   }
-   var a = 0;
-   document.querySelector('.escape-volume').addEventListener('click', function() {
-      volume.style.opacity = 0;
-      setTimeout(function() {
-         volume.style.display = 'none';
-      }, 200)
-      volumeBtn.classList.remove('active');
-      a = 0;
+         .then(function() {
+            number.innerHTML = Number.parseInt(audio.volume * 100);
+            volumeRange.style.height = audio.volume * 100 + 20 + 'px';
+         })
+         .catch(function() {})
    })
-   volumeBtn.addEventListener('click', function() {
-      volume.style.display = 'flex';
-      volume.style.opacity = 1;
-      volumeBtn.classList.add('active');
-      a++;
-      if(a % 2 === 0 && a > 0) {
-         volume.style.opacity = 0;
-         setTimeout(function() {
-            volume.style.display = 'none';
-         }, 200)
-         volumeBtn.classList.remove('active');
-      }
+
+   lessVolume.addEventListener('click', () => {
+      var promise = new Promise(
+         function(resolve, reject) {
+            resolve()
+         }
+      );
+
+      promise
+         .then(function() {
+            if(audio.volume > 0) {
+               audio.volume = audio.volume - 0.2;
+            }else if(audio.volume == 0.2) {
+               audio.volume = 0;
+            }else {
+               audio.volume = 0;
+            }
+         })
+         .then(function() {
+            if(audio.volume < 0.2) {
+               number.innerHTML = 0
+               volumeRange.style.height = 20 + 'px';
+            }else {
+               number.innerHTML = Number.parseInt(audio.volume * 100);
+               volumeRange.style.height = audio.volume * 100 + 20 + 'px';
+            }
+         })
+         .catch(function() {})
    })
 })()

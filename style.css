@@ -159,35 +159,42 @@ html {
 /* Menu main */
 
 /* Volume */
-.volume {
-   position: fixed;
-   display: none;
-   z-index: 100000;
-   background-color: white;
-   transition: 0.2s linear;
-   opacity: 0;
+.toggle-menu-box:checked ~ .volume-wrap {
+   display: block;
 }
 
-.volume::before,
-.volume::after {
+.volume-wrap {
+   position: fixed;
+   background-color: #353b48;
+   z-index: 10000;
+   display: none;
+}
+
+.volume-wrap::before {
    content: "";
    position: absolute;
-   background-color: #333;
+   background-color: #718093;
 }
 
-.volume-item {
-   z-index: 2;
-   cursor: pointer;
-   transition: 0.2s linear;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   color: #fff;
-   user-select: none;
+.volume-range {
+   position: absolute;
+   background-color: #0097e6;
 }
 
-.volume-item:hover:last-child {
-   background-color: #d63031 !important;
+.volume-range::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   background-color: white;
+}
+
+.volume-number {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   color: white;
+   font-family: 'Roboto', sans-serif;
 }
 
 /* Menu *//* Menu *//* Menu *//* Menu *//* Menu */

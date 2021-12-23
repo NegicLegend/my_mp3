@@ -15,28 +15,27 @@
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
-      <link rel="stylesheet" href="reponsive.css">
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" id="theme" href="dark.css">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" id="theme" href="dark.css">
 
-      <link rel="stylesheet" href="./responsive/desktop.css">
-      <link rel="stylesheet" href="./responsive/big-tablet_X.css">
-      <link rel="stylesheet" href="./responsive/laptop.css">
-      <link rel="stylesheet" href="./responsive/tablet_X.css">
-      <link rel="stylesheet" href="./responsive/phone_X.css">
-      <link rel="stylesheet" href="./responsive/small-phone_X.css">
-      <link rel="stylesheet" href="./responsive/big-tablet_Y.css">
-      <link rel="stylesheet" href="./responsive/tablet_Y.css">
-      <link rel="stylesheet" href="./responsive/phone_Y.css">
-      <link rel="stylesheet" href="./responsive/small-phone_Y.css">
+   <link rel="stylesheet" href="./responsive/desktop.css">
+   <link rel="stylesheet" href="./responsive/big-tablet_X.css">
+   <link rel="stylesheet" href="./responsive/laptop.css">
+   <link rel="stylesheet" href="./responsive/tablet_X.css">
+   <link rel="stylesheet" href="./responsive/phone_X.css">
+   <link rel="stylesheet" href="./responsive/small-phone_X.css">
+   <link rel="stylesheet" href="./responsive/big-tablet_Y.css">
+   <link rel="stylesheet" href="./responsive/tablet_Y.css">
+   <link rel="stylesheet" href="./responsive/phone_Y.css">
+   <link rel="stylesheet" href="./responsive/small-phone_Y.css">
 </head>
 
 <body onresize="Resize()">
@@ -66,30 +65,6 @@
    </div>
    <div id="x"></div>
    <div id="y"></div>
-   <a href="https://www.youtube.com/watch?v=6G7ETEx8I7U" class="rick"></a>
-   <div class="volume">
-      <div class="volume-item volume-control">
-         <p>0% <i class="fas fa-volume-mute volume-icon"></i></p>
-      </div>
-      <div class="volume-item volume-control">
-         <p>20% <i class="fas fa-volume-up volume-icon"></i></i></p>
-      </div>
-      <div class="volume-item volume-control">
-         <p>40% <i class="fas fa-volume-up volume-icon"></i></i></p>
-      </div>
-      <div class="volume-item volume-control">
-         <p>60% <i class="fas fa-volume-up volume-icon"></i></i></p>
-      </div>
-      <div class="volume-item volume-control">
-         <p>80% <i class="fas fa-volume-up volume-icon"></i></p>
-      </div>
-      <div class="volume-item volume-control active">
-         <p>100% <i class="fas fa-volume-up volume-icon"></i></p>
-      </div>
-      <div class="volume-item escape-volume">
-         <i class="fas fa-times"></i>
-      </div>
-   </div>
    <div class="player">
       <div class="dashboard" onresize="changeSize()">
          <header class="song-title">
@@ -106,21 +81,25 @@
                <label for="menu-box" class="menu-item menu-btn">
                   <i class="fas fa-bars menu-icon"></i>
                </label>
-               <div class="menu-item volume-btn">
+               <div class="menu-item volume-btn volume-increase">
                   <i class="fas fa-volume-up menu-icon"></i>
                </div>
-               <div class="menu-item rick-btn">
-                  <i class="fas fa-compact-disc menu-icon"></i>
+               <div class="menu-item volume-btn volume-decrease">
+                  <i class="fas fa-volume-down menu-icon"></i>
                </div>
                <div class="menu-item change-theme">
                   <i class="fas fa-moon menu-icon moon-icon"></i>
                   <i class="fas fa-sun menu-icon sun-icon"></i>
                </div>
             </div>
+            <div class="volume-wrap">
+               <div class="volume-range"></div>
+               <p class="volume-number">100</p>
+            </div>
             <div class="menu-names-wrap">
                <p class="menu-name active"></p>
-               <p class="menu-name">Volume</p>
-               <p class="menu-name">More songs</p>
+               <p class="menu-name">Volume +</p>
+               <p class="menu-name">Volume -</p>
                <p class="menu-name">Theme</p>
             </div>
          </div>
@@ -157,25 +136,6 @@
    <div class="playlist"></div>
 </body>
 
-<script src="reponsive.js"></script>
-<script>
-   (function() {
-      var a = 0;
-      var menu = document.querySelector('.menu');
-      const menuBtn = document.querySelector('.menu-btn');
-      menu.addEventListener('click', function(e) {
-         if(e.target.closest('.rick-btn')) {
-            document.querySelector('.rick').click();
-         }
-      })
-      document.querySelector('.menu-btn').addEventListener('click', function() {
-         a++;
-         if(a % 2 == 0 && a != 0) {
-            document.querySelector('.escape-volume').click();
-         }
-      })
-   })()
-</script>
 <script src="menu.js"></script>
 <script>
    function Resize() {

@@ -52,41 +52,35 @@
    /* Menu main */
 
    /* Volume */
-   .volume {
-      top: 40px;
-      border-radius: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+   .volume-wrap {
+      top: 150px;
+      left: 50px;
+      width: 40px;
+      height: 160px;
    }
 
-   .volume::before,
-   .volume::after {
-      inset: -3px;
-      border-radius: 23px;
+   .volume-wrap::before {
+      left: 10px;
+      bottom: 30px;
+      width: 20px;
+      height: 120px;
    }
 
-   .volume-item {
-      width: 120px;
-      height: 80px;
-      font-size: 20px;
+   .volume-range {
+      width: 20px;
+      height: 120px;
+      left: 10px;
+      bottom: 30px;
    }
 
-   .volume-item:first-child {
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
+   .volume-range::before {
+      width: 20px;
+      height: 20px;
    }
 
-   .volume-item:last-child {
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-   }
-
-   .volume-icon {
-      margin-left: 5px;
-   }
-
-   .escape-volume {
-      font-size: 30px;
+   .volume-number {
+      bottom: 5px;
+      font-size: 14px;
    }
 
    /* Menu *//* Menu *//* Menu *//* Menu *//* Menu */
