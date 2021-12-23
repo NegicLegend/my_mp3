@@ -24,13 +24,22 @@
       rel="stylesheet">
 
       <link rel="stylesheet" href="reponsive.css">
-      <link rel="stylesheet" id="responsive" href="reponsive-size.css">
       <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" id="theme" href="dark.css">
+      <link rel="stylesheet" id="theme" href="dark.css">
+
+      <link rel="stylesheet" href="./responsive/desktop.css">
+      <link rel="stylesheet" href="./responsive/big-tablet_X.css">
+      <link rel="stylesheet" href="./responsive/laptop.css">
+      <link rel="stylesheet" href="./responsive/tablet_X.css">
+      <link rel="stylesheet" href="./responsive/phone_X.css">
+      <link rel="stylesheet" href="./responsive/small-phone_X.css">
+      <link rel="stylesheet" href="./responsive/big-tablet_Y.css">
+      <link rel="stylesheet" href="./responsive/tablet_Y.css">
+      <link rel="stylesheet" href="./responsive/phone_Y.css">
+      <link rel="stylesheet" href="./responsive/small-phone_Y.css">
 </head>
 
-<body onresize="changeSize(); responsive(); document.getElementById('refesh').click()">
-   <a href="" id="refesh"></a>
+<body onresize="Resize()">
    <div class="load-wrap">
       <div class="loader">
          <span style="--i:1;" class="load-dot"></span>
@@ -151,13 +160,6 @@
 <script src="reponsive.js"></script>
 <script>
    (function() {
-      setTimeout(function () {
-         document.querySelector('.load-wrap').style.display = 'none';
-      }, 5000)
-   })()
-</script>
-<script>
-   (function() {
       var a = 0;
       var menu = document.querySelector('.menu');
       const menuBtn = document.querySelector('.menu-btn');
@@ -175,70 +177,108 @@
    })()
 </script>
 <script src="menu.js"></script>
-<script src="size-control.js"></script>
+<script>
+   function Resize() {
+      var promise1 = new Promise(
+            function(resolve, reject) {
+               resolve()
+            }
+         );
+
+      promise1
+         .then(function() {
+            document.querySelector('.load-wrap').style.display = 'flex';
+         })
+         .then(function() {
+            setTimeout(function() {
+               const thumb = document.querySelectorAll('.thumb');
+               for (var i = 0; i < thumb.length; i++) {
+                  thumb[i].style.width = thumb[i].offsetHeight + 'px';
+               }
+            }, 1000)
+         })
+         .then(function() {
+            const dashBoard = document.querySelector('.dashboard');
+            const playList = document.querySelector('.playlist');
+            dashBoard.addEventListener('load', (event) => {
+               playList.style.marginTop = dashBoard.offsetHeight + 'px';
+            });
+         })
+         .then(function() {
+            document.querySelector('.load-wrap').style.display = 'none';
+         })
+         .catch(function() {})
+   }
+</script>
 <script src="time.js"></script>
 <script src="main.js"></script>
 <script>
-   function changeSize() {
-      const dashBoard = document.querySelector('.dashboard');
-      const playList = document.querySelector('.playlist');
-      playList.style.marginTop = dashBoard.offsetHeight + 'px';
+   (function() {
+      var promise = new Promise(
+         function(resolve, reject) {
+            resolve()
+         }
+      );
 
-      const thumb = document.querySelectorAll('.thumb');
-      for (var i = 0; i < thumb.length; i++) {
-         thumb[i].style.width = thumb[i].offsetHeight + 'px';
-      }
-   }
-   changeSize()
-</script>
-<script>
-   function showtimeCurrent() {
-      var audio = document.querySelector('#audio');
+      promise
+         .then(function() {
+            const dashBoard = document.querySelector('.dashboard');
+            const playList = document.querySelector('.playlist');
+            setTimeout(function() {
+               playList.style.marginTop = dashBoard.offsetHeight + 'px';
+            }, 1000)
 
-      var loadTime = setInterval(function () {
-         var durationTimeText = document.querySelector('.time-duration')
-         var duration = audio.duration;
-         var durationHours = Math.floor(duration / 3600);
-         var durationMinutes = Math.floor(duration / 60) % 60;
-         var b = duration - durationHours * 3600 - durationMinutes * 60;
-         var durationSeconds = Math.floor(b);
+            const thumb = document.querySelectorAll('.thumb');
+            for (var i = 0; i < thumb.length; i++) {
+               thumb[i].style.width = thumb[i].offsetHeight + 'px';
+            }
+         })
+         .then(function() {
+            var audio = document.querySelector('#audio');
+            var durationTimeText = document.querySelector('.time-duration')
+            var duration = audio.duration;
+            var durationHours = Math.floor(duration / 3600);
+            var durationMinutes = Math.floor(duration / 60) % 60;
+            var b = duration - durationHours * 3600 - durationMinutes * 60;
+            var durationSeconds = Math.floor(b);
 
-         if (!isNaN(durationSeconds)) {
-            if (durationHours > 0) {
-               if (durationMinutes > 9) {
-                  if (durationSeconds > 9) {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:${durationSeconds}</p>`;
+            if (!isNaN(durationSeconds)) {
+               if (durationHours > 0) {
+                  if (durationMinutes > 9) {
+                     if (durationSeconds > 9) {
+                        durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:${durationSeconds}</p>`;
+                     } else {
+                        durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:0${durationSeconds}</p>`;
+                     }
                   } else {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:0${durationSeconds}</p>`;
+                     if (durationSeconds > 9) {
+                        durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:${durationSeconds}</p>`;
+                     } else {
+                        durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:0${durationSeconds}</p>`;
+                     }
+                  }
+               } else if (durationMinutes > 0) {
+                  if (durationSeconds < 10) {
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:0${durationSeconds}</p>`;
+                  } else {
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:${durationSeconds}</p>`;
                   }
                } else {
-                  if (durationSeconds > 9) {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:${durationSeconds}</p>`;
+                  if (durationSeconds < 10) {
+                     durationTimeText.innerHTML = `<p class="duration-time">0${durationSeconds}</p>`;
                   } else {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:0${durationSeconds}</p>`;
+                     durationTimeText.innerHTML = `<p class="duration-time">${durationSeconds}</p>`;
                   }
-               }
-            } else if (durationMinutes > 0) {
-               if (durationSeconds < 10) {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:0${durationSeconds}</p>`;
-               } else {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:${durationSeconds}</p>`;
-               }
-            } else {
-               if (durationSeconds < 10) {
-                  durationTimeText.innerHTML = `<p class="duration-time">0${durationSeconds}</p>`;
-               } else {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationSeconds}</p>`;
                }
             }
-         }
-      }, 100)
-
-      setTimeout(function () {
-         clearInterval(loadTime)
-      }, 10000)
-   }
-   showtimeCurrent();
+         })
+         .catch(function() {})
+   })()
+</script>
+<script>
+   window.addEventListener('load', (event) => {
+      document.querySelector('.load-wrap').style.display = 'none';
+   });
 </script>
 <script src="playerTheme.js"></script>
 <script>

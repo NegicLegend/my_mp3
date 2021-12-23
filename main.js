@@ -149,33 +149,6 @@ const app = {
          iterations: Infinity
       });
       cdThumbAnimate.pause();
-      
-      const CDWidth = cd.offsetWidth;
-      document.onscroll = function () {
-         const scrollTop = window.scrollY || document.documentElement.scrollTop;
-         const newCDWidth = CDWidth - scrollTop;
-
-         if(newCDWidth > 0) {
-            cd.style.width = newCDWidth + 'px';
-            cd.style.opacity = newCDWidth / CDWidth;
-         }else {
-            cd.style.width = 0;
-            cd.style.opacity = newCDWidth / CDWidth;
-         }
-
-         if(cd.style.opacity < 0.3) {
-            cd.style.opacity = 0;
-         }
-
-         if(newCDWidth == CDWidth) {
-            cd.style.opacity = 1;
-            menu.style.display = 'flex';
-            nameWrap.style.display  = 'block';
-         }else {
-            menu.style.display = 'none';
-            nameWrap.style.display = 'none';
-         }
-      }
 
       playBtn.onclick = function() {
          if(app.isPlaying) {
