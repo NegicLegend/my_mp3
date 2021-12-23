@@ -89,6 +89,12 @@ const app = {
          image: "./img/img10.jpg",
       },
       {
+         name: "『旅の途中』 Ninomae Ina'nis (Cover)",
+         singer: "Ninomae Ina'nis",
+         path: "./music/mp3(1).mp3",
+         image: "./img/img1.jpg",
+      },
+      {
          name: "馬と鹿 - 米津玄師／天音かなた(Cover)",
          singer: "Amane Kanata",
          path: "./music/mp3(12).mp3",
