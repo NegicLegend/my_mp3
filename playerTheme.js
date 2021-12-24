@@ -4,9 +4,9 @@ function changeTheme(selec) {
    const dark = selec.darkTheme;
    const light = selec.lightTheme;
    changeBtn.onclick = function() {
-      if(css.href.indexOf(dark) > -1) {
+      if(css.href.indexOf('dark') > -1) {
          css.href = light;
-      }else if(css.href.indexOf(light) > -1) {
+      }else if(css.href.indexOf('light') > -1) {
          css.href = dark;
       }else {
          console.error('Something must be wrong!')
