@@ -39,7 +39,7 @@
    /* Volume */
    .volume-wrap {
       top: 50%;
-      left: 40px;
+      left: 4%;
       width: 40px;
       height: 160px;
       transform: translateY(-50%);

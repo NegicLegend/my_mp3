@@ -312,7 +312,8 @@ html {
 /* Time */
 
 .time {
-   width: 100%;
+   align-self: center;
+   width: 95%;
    display: flex;
    justify-content: space-between;
    margin-bottom: 2px;

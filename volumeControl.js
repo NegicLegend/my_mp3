@@ -1,4 +1,39 @@
 (function() {
+   function responsive() {
+      const XWidth = document.getElementById('x').offsetWidth;
+      const YHeight = document.getElementById('y').offsetHeight;
+      var a = 0;
+      if(XWidth >= YHeight) {
+         if(XWidth >= 1800) {
+            a = 40;
+         }else if(XWidth >= 1100 && XWidth < 1800) {
+            if(YHeight >= 1000) {
+               a = 30;
+            }else {
+               a = 20;
+            }
+         }else if(YHeight >= 550 && YHeight < 1000) {
+            a = 20;
+         }else if(YHeight >= 310 && YHeight < 550) {
+            a = 20;
+         }else if(YHeight < 310) {
+            a = 15;
+         }
+      }else {
+         if(XWidth >= 850 && XWidth < 1100) {
+            a = 40;
+         }else if(XWidth >= 550 && XWidth < 850) {
+            a = 20;
+         }else if(XWidth >= 310 && XWidth < 550) {
+            a = 20;
+         }else if(XWidth < 310) {
+            a = 15;
+         }
+      }
+      return a;
+   }
+   responsive()
+
    const audio = document.getElementById('audio');
    audio.volume = 1;
 
@@ -24,7 +59,7 @@
          })
          .then(function() {
             number.innerHTML = Number.parseInt(audio.volume * 100);
-            volumeRange.style.height = audio.volume * 100 + 20 + 'px';
+            volumeRange.style.height = audio.volume * responsive() * 5 + responsive() + 'px';
          })
          .catch(function() {})
    })
@@ -52,7 +87,7 @@
                volumeRange.style.height = 20 + 'px';
             }else {
                number.innerHTML = Number.parseInt(audio.volume * 100);
-               volumeRange.style.height = audio.volume * 100 + 20 + 'px';
+               volumeRange.style.height = audio.volume * responsive() * 5 + responsive() + 'px';
             }
          })
          .catch(function() {})

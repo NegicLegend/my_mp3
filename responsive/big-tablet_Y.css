@@ -51,46 +51,46 @@
 
    /* Volume */
    .volume-wrap {
-      top: 150px;
-      left: 50px;
-      width: 40px;
-      height: 160px;
+      top: 10%;
+      left: 5%;
+      width: 70px;
+      height: 315px;
    }
 
    .volume-wrap::before {
-      left: 10px;
-      bottom: 30px;
-      width: 20px;
-      height: 120px;
+      left: 15px;
+      bottom: 60px;
+      width: 40px;
+      height: 240px;
    }
 
    .volume-range {
-      width: 20px;
-      height: 120px;
-      left: 10px;
-      bottom: 30px;
+      width: 40px;
+      height: 240px;
+      left: 15px;
+      bottom: 60px;
    }
 
    .volume-range::before {
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
    }
 
    .volume-number {
-      bottom: 5px;
-      font-size: 14px;
+      bottom: 10px;
+      font-size: 24px;
    }
 
    /* Main *//* Main *//* Main *//* Main *//* Main *//* Main */
 
    /* Header *//* Header *//* Header *//* Header *//* Header */
    .song-title {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
    }
 
    .song-playing {
       font-size: 20px;
-      margin-bottom: 10px;
+      margin: 10px 0;
    }
 
    .song-name {
@@ -103,6 +103,10 @@
       margin: auto;
    }
 
+   .dashboard {
+      padding: 0 20px;
+   }
+
    .cd-thumb {
       width: 40%;
       padding-top: 40%;
@@ -112,27 +116,35 @@
 
    /* Control *//* Control *//* Control *//* Control */
    .control {
+      width: 90%;
       padding: 20px 0;
       margin-top: 30px;
    }
 
    .control .btn {
       padding: 20px;
-      font-size: 32px;
+      font-size: 40px;
    }
 
    .control .btn-toggle-play {
-      padding: 20px;
-      font-size: 26px;
+      padding: 24px;
+      font-size: 30px;
    }
 
    .progress {
-      height: 10px;
+      width: calc(100% - 40px);
+      height: 15px;
+      text-align: center;
+      transform: translateY(-20px);
+   }
+
+   .time {
+      transform: translateY(-20px);
    }
 
    .progress::-webkit-slider-thumb {
-      height: 10px;
-      width: 30px;
+      height: 15px;
+      width: 50px;
    }
 
    /* Control *//* Control *//* Control *//* Control */

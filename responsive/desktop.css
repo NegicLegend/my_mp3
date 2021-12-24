@@ -53,34 +53,34 @@
 
    /* Volume */
    .volume-wrap {
-      bottom: 50%;
-      left: calc(50% - 10px);
-      width: 40px;
-      height: 160px;
+      top: 20%;
+      left: 5%;
+      width: 70px;
+      height: 315px;
    }
 
    .volume-wrap::before {
-      left: 10px;
-      bottom: 30px;
-      width: 20px;
-      height: 120px;
+      left: 15px;
+      bottom: 60px;
+      width: 40px;
+      height: 240px;
    }
 
    .volume-range {
-      width: 20px;
-      height: 120px;
-      left: 10px;
-      bottom: 30px;
+      width: 40px;
+      height: 240px;
+      left: 15px;
+      bottom: 60px;
    }
 
    .volume-range::before {
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
    }
 
    .volume-number {
-      bottom: 5px;
-      font-size: 14px;
+      bottom: 10px;
+      font-size: 24px;
    }
 
    /* Menu *//* Menu *//* Menu *//* Menu *//* Menu */
