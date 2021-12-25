@@ -150,6 +150,8 @@ const app = {
    },
    handleEvents: function () {
       _this = this;
+      var loadCurrentTime;
+
       const cdThumbAnimate = cdThumb.animate([{ transform: "rotate(360deg)" }], {
          duration: 30000,
          iterations: Infinity
@@ -160,12 +162,23 @@ const app = {
          if(app.isPlaying) {
             audio.pause();
          }else {
-            audio.play();
-            _this.songActive();    
-            const thumb = document.querySelectorAll('.thumb');
-            for(var i = 0; i < thumb.length; i++) {
-               thumb[i].style.width = thumb[i].offsetHeight + 'px';
-            }
+            var promise = new Promise(
+               function(resolve, reject) {
+                  resolve()
+               }
+            );
+            promise
+               .then(function() {
+                  audio.play();
+               })
+               .then(function() {
+                  _this.songActive();
+               })
+               .then(function() {
+                  _this.loadDurationTime();
+                  isLoadingCurrentTime()
+               })
+               .catch(function() {})
          }
       }
 
@@ -173,46 +186,77 @@ const app = {
          if(app.isPlaying) {
             audio.pause();
          }else {
-            audio.play();
-            _this.songActive();    
-            const thumb = document.querySelectorAll('.thumb');
-            for(var i = 0; i < thumb.length; i++) {
-               thumb[i].style.width = thumb[i].offsetHeight + 'px';
-            }
-            _this.loadDurationTime();
+            var promise = new Promise(
+               function(resolve, reject) {
+                  resolve()
+               }
+            );
+            promise
+               .then(function() {
+                  audio.play();
+               })
+               .then(function() {
+                  _this.songActive();
+               })
+               .then(function() {
+                  _this.loadDurationTime();
+               })
+               .catch(function() {})
          }
       }
 
       nextBtn.onclick = function() {
-         if(_this.isRandom) {
-            _this.playRandomSong()
-         }else {
-            _this.nextSong()
-         }
-         audio.play();
-         _this.songActive();
-         _this.scrollToActiveSong();
-         _this.loadDurationTime();
-         const thumb = document.querySelectorAll('.thumb');
-         for(var i = 0; i < thumb.length; i++) {
-            thumb[i].style.width = thumb[i].offsetHeight + 'px';
-         }
+         var promise = new Promise(
+            function(resolve, reject) {
+               resolve()
+            }
+         );
+         promise
+            .then(function() {
+               if(_this.isRandom) {
+                  _this.playRandomSong()
+               }else {
+                  _this.nextSong()
+               }
+            })
+            .then(function() {
+               audio.play();
+            })
+            .then(function() {
+               _this.songActive();
+               _this.scrollToActiveSong();
+            })
+            .then(function() {
+               _this.loadDurationTime();
+            })
+            .catch(function() {})
       }
 
       prevBtn.onclick = function() {
-         if(_this.isRandom) {
-            _this.playRandomSong()
-         }else {
-            _this.prevSong()
-         }
-         audio.play();
-         _this.songActive();
-         _this.scrollToActiveSong();
-         _this.loadDurationTime();
-         const thumb = document.querySelectorAll('.thumb');
-         for(var i = 0; i < thumb.length; i++) {
-            thumb[i].style.width = thumb[i].offsetHeight + 'px';
-         }
+         var promise = new Promise(
+            function(resolve, reject) {
+               resolve()
+            }
+         );
+         promise
+            .then(function() {
+               if(_this.isRandom) {
+                  _this.playRandomSong()
+               }else {
+                  _this.prevSong()
+               }
+            })
+            .then(function() {
+               audio.play();
+            })
+            .then(function() {
+               _this.songActive();
+               _this.scrollToActiveSong();
+            })
+            .then(function() {
+               _this.loadDurationTime();
+            })
+            .catch(function() {})
       }
 
       randomBtn.onclick = function(e) {
@@ -224,12 +268,65 @@ const app = {
          app.isPlaying = true;
          player.classList.add('playing');
          cdThumbAnimate.play();
+         loadCurrentTime = setInterval(function() {
+            var now = audio.currentTime;
+            var currentTimeText = document.querySelector('.current-time');
+            var nowHours = Math.floor(now / 3600);
+            var nowMinutes = Math.floor(now / 60) % 60; 
+            var a = now - nowHours * 3600 - nowMinutes * 60;
+            var nowSeconds = Math.floor(a);
+      
+            var duration = audio.duration;
+            var durationHours = Math.floor(duration / 3600);
+            var durationMinutes = Math.floor(duration / 60) % 60; 
+      
+            if(!isNaN(nowSeconds)) {
+               if(durationHours > 0) {
+                  if(nowMinutes >= 10) {
+                     if(nowSeconds >= 10) {
+                        currentTimeText.innerHTML = `${nowHours}:${nowMinutes}:${nowSeconds}`
+                     }else {
+                        currentTimeText.innerHTML = `${nowHours}:${nowMinutes}:0${nowSeconds}`
+                     }
+                  }else {
+                     if(nowSeconds >= 10) {
+                        currentTimeText.innerHTML = `${nowHours}:0${nowMinutes}:${nowSeconds}`
+                     }else {
+                        currentTimeText.innerHTML = `${nowHours}:0${nowMinutes}:0${nowSeconds}`
+                     }
+                  }
+               }else {
+                  if(durationMinutes >= 10) {
+                     if(nowMinutes >= 10) {
+                        if(nowSeconds >= 10) {
+                           currentTimeText.innerHTML = `${nowMinutes}:${nowSeconds}`
+                        }else {
+                           currentTimeText.innerHTML = `${nowMinutes}:0${nowSeconds}`
+                        }
+                     }else {
+                        if(nowSeconds >= 10) {
+                           currentTimeText.innerHTML = `0${nowMinutes}:${nowSeconds}`
+                        }else {
+                           currentTimeText.innerHTML = `0${nowMinutes}:0${nowSeconds}`
+                        }
+                     }
+                  }else {
+                     if(nowSeconds >= 10) {
+                        currentTimeText.innerHTML = `${nowMinutes}:${nowSeconds}`
+                     }else {
+                        currentTimeText.innerHTML = `${nowMinutes}:0${nowSeconds}`
+                     }
+                  }
+               }
+            }
+         }, 100)
       }
 
       audio.onpause = function () {
          app.isPlaying = false;
          player.classList.remove('playing');
          cdThumbAnimate.pause();
+         clearInterval(loadCurrentTime)
       }
 
       audio.ontimeupdate = function () {
@@ -262,8 +359,8 @@ const app = {
    
          if (songNode || e.target.closest(".option")) {
             _this.currentIndex = Number(songNode.dataset.index);
-            _this.loadDurationTime();
             _this.loadCurrentSong();
+            _this.loadDurationTime();
             _this.songActive();
             audio.play();
          }
@@ -283,97 +380,43 @@ const app = {
       audio.src = this.currentSong.path;
    },
    loadDurationTime: function () {
-      setTimeout(function() {
-         const durationTimeText = document.querySelector('.time-duration')
-         const duration = audio.duration;
-         const durationHours = Math.floor(duration / 3600);
-         const durationMinutes = Math.floor(duration / 60) % 60; 
-         const b = duration - durationHours * 3600 - durationMinutes * 60;
-         const durationSeconds = Math.floor(b);
+      const durationTimeText = document.querySelector('.time-duration')
+      const duration = audio.duration;
+      const durationHours = Math.floor(duration / 3600);
+      const durationMinutes = Math.floor(duration / 60) % 60; 
+      const b = duration - durationHours * 3600 - durationMinutes * 60;
+      const durationSeconds = Math.floor(b);
 
-         if(!isNaN(durationSeconds)){
-            if(durationHours > 0) {
-               if(durationMinutes > 9) {
-                  if(durationSeconds > 9) {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:${durationSeconds}</p>`;
-                  }else {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:0${durationSeconds}</p>`;
-                  }
+      if(!isNaN(durationSeconds)){
+         if(durationHours > 0) {
+            if(durationMinutes > 9) {
+               if(durationSeconds > 9) {
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:${durationSeconds}</p>`;
                }else {
-                  if(durationSeconds > 9) {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:${durationSeconds}</p>`;
-                  }else {
-                     durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:0${durationSeconds}</p>`;
-                  }
-               }
-            }else if(durationMinutes > 0) {
-               if(durationSeconds < 10) {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:0${durationSeconds}</p>`;
-               }else {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:${durationSeconds}</p>`;
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:0${durationSeconds}</p>`;
                }
             }else {
-               if(durationSeconds < 10) {
-                  durationTimeText.innerHTML = `<p class="duration-time">0${durationSeconds}</p>`;
+               if(durationSeconds > 9) {
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:${durationSeconds}</p>`;
                }else {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationSeconds}</p>`;
+                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:0${durationSeconds}</p>`;
                }
             }
-         }
-      }, 500)
-   },
-   loadCurrentTime: setInterval(function() {
-      var now = audio.currentTime;
-      var currentTimeText = document.querySelector('.current-time');
-      var nowHours = Math.floor(now / 3600);
-      var nowMinutes = Math.floor(now / 60) % 60; 
-      var a = now - nowHours * 3600 - nowMinutes * 60;
-      var nowSeconds = Math.floor(a);
-
-      var duration = audio.duration;
-      var durationHours = Math.floor(duration / 3600);
-      var durationMinutes = Math.floor(duration / 60) % 60; 
-
-      if(!isNaN(nowSeconds)) {
-         if(durationHours > 0) {
-            if(nowMinutes >= 10) {
-               if(nowSeconds >= 10) {
-                  currentTimeText.innerHTML = `${nowHours}:${nowMinutes}:${nowSeconds}`
-               }else {
-                  currentTimeText.innerHTML = `${nowHours}:${nowMinutes}:0${nowSeconds}`
-               }
+         }else if(durationMinutes > 0) {
+            if(durationSeconds < 10) {
+               durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:0${durationSeconds}</p>`;
             }else {
-               if(nowSeconds >= 10) {
-                  currentTimeText.innerHTML = `${nowHours}:0${nowMinutes}:${nowSeconds}`
-               }else {
-                  currentTimeText.innerHTML = `${nowHours}:0${nowMinutes}:0${nowSeconds}`
-               }
+               durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:${durationSeconds}</p>`;
             }
          }else {
-            if(durationMinutes >= 10) {
-               if(nowMinutes >= 10) {
-                  if(nowSeconds >= 10) {
-                     currentTimeText.innerHTML = `${nowMinutes}:${nowSeconds}`
-                  }else {
-                     currentTimeText.innerHTML = `${nowMinutes}:0${nowSeconds}`
-                  }
-               }else {
-                  if(nowSeconds >= 10) {
-                     currentTimeText.innerHTML = `0${nowMinutes}:${nowSeconds}`
-                  }else {
-                     currentTimeText.innerHTML = `0${nowMinutes}:0${nowSeconds}`
-                  }
-               }
+            if(durationSeconds < 10) {
+               durationTimeText.innerHTML = `<p class="duration-time">0${durationSeconds}</p>`;
             }else {
-               if(nowSeconds >= 10) {
-                  currentTimeText.innerHTML = `${nowMinutes}:${nowSeconds}`
-               }else {
-                  currentTimeText.innerHTML = `${nowMinutes}:0${nowSeconds}`
-               }
+               durationTimeText.innerHTML = `<p class="duration-time">${durationSeconds}</p>`;
             }
          }
       }
-   }, 500),
+   },
    nextSong: function () {
       this.currentIndex++
       if(this.currentIndex == this.songs.length) {
