@@ -358,11 +358,28 @@ const app = {
          const songNode = e.target.closest(".song:not(.active)");
    
          if (songNode || e.target.closest(".option")) {
-            _this.currentIndex = Number(songNode.dataset.index);
-            _this.loadCurrentSong();
-            _this.loadDurationTime();
-            _this.songActive();
-            audio.play();
+            var promise = new Promise(
+               function(resolve, reject) {
+                  resolve()
+               }
+            );
+            promise
+               .then(function() {
+                  _this.currentIndex = Number(songNode.dataset.index);
+               })
+               .then(function() {
+                  _this.loadCurrentSong();
+               })
+               .then(function() {
+                  _this.songActive();
+                  audio.play();
+               })
+               .then(function() {
+                  setTimeout(function () {
+                     _this.loadDurationTime();
+                  }, 500)
+               })
+               .catch(function() {})
          }
       };
    },
