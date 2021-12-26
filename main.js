@@ -375,9 +375,17 @@ const app = {
                   audio.play();
                })
                .then(function() {
+                  _this.loadDurationTime();
+               })
+               .then(function() {
                   setTimeout(function () {
                      _this.loadDurationTime();
-                  }, 1000)
+                  }, 500)
+               })
+               .then(function() {
+                  setTimeout(function () {
+                     _this.loadDurationTime();
+                  }, 500)
                })
                .catch(function() {})
          }
