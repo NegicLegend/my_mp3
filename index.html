@@ -280,13 +280,11 @@
                })
             }
          })
+         .then(function() {
+            document.querySelector('.load-wrap').style.display = 'none';
+         })
          .catch(function() {})
    })()
-</script>
-<script>
-   window.addEventListener('load', (event) => {
-      document.querySelector('.load-wrap').style.display = 'none';
-   });
 </script>
 <script src="playerTheme.js"></script>
 <script>
