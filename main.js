@@ -397,7 +397,7 @@ const app = {
       audio.src = this.currentSong.path;
    },
    loadDurationTime: function () {
-      const durationTimeText = document.querySelector('.time-duration')
+      const durationTimeText = document.querySelector('.time-duration');
       const duration = audio.duration;
       const durationHours = Math.floor(duration / 3600);
       const durationMinutes = Math.floor(duration / 60) % 60; 
