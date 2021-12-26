@@ -377,7 +377,7 @@ const app = {
                .then(function() {
                   setTimeout(function () {
                      _this.loadDurationTime();
-                  }, 500)
+                  }, 1000)
                })
                .catch(function() {})
          }
