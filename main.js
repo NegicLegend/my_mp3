@@ -29,6 +29,12 @@ const app = {
          image: "./img/img14.jpg",
       },
       {
+         name: "[MV] Red - Calliope Mori",
+         singer: "Mori Calliope",
+         path: "./music/mp3(18).mp3",
+         image: "./img/img17.jpg",
+      },
+      {
          name: "「君の名は。」スパークル/RADWIMPS Cover by大神ミオ【歌ってみた/4K】",
          singer: "Ookami Mio",
          path: "./music/mp3(2).mp3",
@@ -77,6 +83,18 @@ const app = {
          image: "./img/img8.jpg",
       },
       {
+         name: "踊／Covered by紫咲シオン【歌ってみた】",
+         singer: "Murasaki Shion",
+         path: "./music/mp3(19).mp3",
+         image: "./img/img18.jpg",
+      },
+      {
+         name: "白日 / King Gnu (covered by 紫咲シオン)",
+         singer: "Murasaki Shion",
+         path: "./music/mp3(17).mp3",
+         image: "./img/img16.jpg",
+      },
+      {
          name: "【歌ってみた】花に亡霊 / ヨルシカ【潤羽るしあcover】",
          singer: "Uruha Rushia",
          path: "./music/mp3(10).mp3",
@@ -117,13 +135,7 @@ const app = {
          singer: "Shigure Ui, Oozora Subaru",
          path: "./music/mp3(16).mp3",
          image: "./img/img15.jpg",
-      },
-      {
-         name: "白日 / King Gnu (covered by 紫咲シオン)",
-         singer: "Murasaki Shion",
-         path: "./music/mp3(17).mp3",
-         image: "./img/img16.jpg",
-      },
+      }
    ],
    render: function () {
       const htmls = this.songs.map((song, index) => {
