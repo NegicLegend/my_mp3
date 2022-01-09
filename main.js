@@ -35,6 +35,12 @@ const app = {
          image: "./img/img17.jpg",
       },
       {
+         name: "[MV] いじめっ子 Bully- Calliope Mori",
+         singer: "Mori Calliope",
+         path: "./music/mp3(20).mp3",
+         image: "./img/img19.jpg",
+      },
+      {
          name: "「君の名は。」スパークル/RADWIMPS Cover by大神ミオ【歌ってみた/4K】",
          singer: "Ookami Mio",
          path: "./music/mp3(2).mp3",
