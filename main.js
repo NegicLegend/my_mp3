@@ -77,6 +77,12 @@ const app = {
          image: "./img/img6.jpg",
       },
       {
+         name: "オリジナル曲】　FACT/常闇トワ　【フルMV】",
+         singer: "Tokoyami Towa",
+         path: "./music/mp3(21).mp3",
+         image: "./img/img20.jpg",
+      },
+      {
          name: "【歌ってみた】だから僕は音楽を辞めた / ヨルシカ【不知火フレア(Cover)】",
          singer: "Shiranui Flare",
          path: "./music/mp3(8).mp3",
