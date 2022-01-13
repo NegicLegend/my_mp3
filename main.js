@@ -225,6 +225,16 @@ const app = {
                .then(function() {
                   _this.loadDurationTime();
                })
+               .then(function() {
+                  setTimeout(function () {
+                     _this.loadDurationTime();
+                  }, 500)
+               })
+               .then(function() {
+                  setTimeout(function () {
+                     _this.loadDurationTime();
+                  }, 500)
+               })
                .catch(function() {})
          }
       }
@@ -253,6 +263,16 @@ const app = {
             .then(function() {
                _this.loadDurationTime();
             })
+            .then(function() {
+               setTimeout(function () {
+                  _this.loadDurationTime();
+               }, 500)
+            })
+            .then(function() {
+               setTimeout(function () {
+                  _this.loadDurationTime();
+               }, 500)
+            })
             .catch(function() {})
       }
 
@@ -279,6 +299,16 @@ const app = {
             })
             .then(function() {
                _this.loadDurationTime();
+            })
+            .then(function() {
+               setTimeout(function () {
+                  _this.loadDurationTime();
+               }, 500)
+            })
+            .then(function() {
+               setTimeout(function () {
+                  _this.loadDurationTime();
+               }, 500)
             })
             .catch(function() {})
       }
