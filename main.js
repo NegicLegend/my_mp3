@@ -470,29 +470,25 @@ const app = {
          if(durationHours > 0) {
             if(durationMinutes > 9) {
                if(durationSeconds > 9) {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:${durationSeconds}</p>`;
+                  durationTimeText.innerHTML = `${durationHours}:${durationMinutes}:${durationSeconds}`;
                }else {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:${durationMinutes}:0${durationSeconds}</p>`;
+                  durationTimeText.innerHTML = `${durationHours}:${durationMinutes}:0${durationSeconds}`;
                }
             }else {
                if(durationSeconds > 9) {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:${durationSeconds}</p>`;
+                  durationTimeText.innerHTML = `${durationHours}:0${durationMinutes}:${durationSeconds}`;
                }else {
-                  durationTimeText.innerHTML = `<p class="duration-time">${durationHours}:0${durationMinutes}:0${durationSeconds}</p>`;
+                  durationTimeText.innerHTML = `${durationHours}:0${durationMinutes}:0${durationSeconds}`;
                }
             }
          }else if(durationMinutes > 0) {
             if(durationSeconds < 10) {
-               durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:0${durationSeconds}</p>`;
+               durationTimeText.innerHTML = `${durationMinutes}:0${durationSeconds}`;
             }else {
-               durationTimeText.innerHTML = `<p class="duration-time">${durationMinutes}:${durationSeconds}</p>`;
+               durationTimeText.innerHTML = `${durationMinutes}:${durationSeconds}`;
             }
          }else {
-            if(durationSeconds < 10) {
-               durationTimeText.innerHTML = `<p class="duration-time">0${durationSeconds}</p>`;
-            }else {
-               durationTimeText.innerHTML = `<p class="duration-time">${durationSeconds}</p>`;
-            }
+            durationTimeText.innerHTML = `${durationSeconds}`;
          }
       }
    },
