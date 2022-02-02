@@ -315,12 +315,11 @@ html {
    align-self: center;
    width: 95%;
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
    margin-bottom: 2px;
    height: 25px;
 }
 
-.time-duration,
 .current-time {
    letter-spacing: 5px;
    font-weight: 300;

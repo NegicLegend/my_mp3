@@ -186,23 +186,8 @@ const app = {
          if(app.isPlaying) {
             audio.pause();
          }else {
-            var promise = new Promise(
-               function(resolve, reject) {
-                  resolve()
-               }
-            );
-            promise
-               .then(function() {
-                  audio.play();
-               })
-               .then(function() {
-                  _this.songActive();
-               })
-               .then(function() {
-                  _this.loadDurationTime();
-                  isLoadingCurrentTime()
-               })
-               .catch(function() {})
+            audio.play();
+            _this.songActive();
          }
       }
 
@@ -210,107 +195,31 @@ const app = {
          if(app.isPlaying) {
             audio.pause();
          }else {
-            var promise = new Promise(
-               function(resolve, reject) {
-                  resolve()
-               }
-            );
-            promise
-               .then(function() {
-                  audio.play();
-               })
-               .then(function() {
-                  _this.songActive();
-               })
-               .then(function() {
-                  _this.loadDurationTime();
-               })
-               .then(function() {
-                  setTimeout(function () {
-                     _this.loadDurationTime();
-                  }, 500)
-               })
-               .then(function() {
-                  setTimeout(function () {
-                     _this.loadDurationTime();
-                  }, 500)
-               })
-               .catch(function() {})
+            audio.play();
+            _this.songActive();
          }
       }
 
       nextBtn.onclick = function() {
-         var promise = new Promise(
-            function(resolve, reject) {
-               resolve()
-            }
-         );
-         promise
-            .then(function() {
-               if(_this.isRandom) {
-                  _this.playRandomSong()
-               }else {
-                  _this.nextSong()
-               }
-            })
-            .then(function() {
-               audio.play();
-            })
-            .then(function() {
-               _this.songActive();
-               _this.scrollToActiveSong();
-            })
-            .then(function() {
-               _this.loadDurationTime();
-            })
-            .then(function() {
-               setTimeout(function () {
-                  _this.loadDurationTime();
-               }, 500)
-            })
-            .then(function() {
-               setTimeout(function () {
-                  _this.loadDurationTime();
-               }, 500)
-            })
-            .catch(function() {})
+         if(_this.isRandom) {
+            _this.playRandomSong()
+         }else {
+            _this.nextSong()
+         }
+         audio.play();
+         _this.songActive();
+         _this.scrollToActiveSong();
       }
 
       prevBtn.onclick = function() {
-         var promise = new Promise(
-            function(resolve, reject) {
-               resolve()
-            }
-         );
-         promise
-            .then(function() {
-               if(_this.isRandom) {
-                  _this.playRandomSong()
-               }else {
-                  _this.prevSong()
-               }
-            })
-            .then(function() {
-               audio.play();
-            })
-            .then(function() {
-               _this.songActive();
-               _this.scrollToActiveSong();
-            })
-            .then(function() {
-               _this.loadDurationTime();
-            })
-            .then(function() {
-               setTimeout(function () {
-                  _this.loadDurationTime();
-               }, 500)
-            })
-            .then(function() {
-               setTimeout(function () {
-                  _this.loadDurationTime();
-               }, 500)
-            })
-            .catch(function() {})
+         if(_this.isRandom) {
+            _this.playRandomSong()
+         }else {
+            _this.prevSong()
+         }
+         audio.play();
+         _this.songActive();
+         _this.scrollToActiveSong();
       }
 
       randomBtn.onclick = function(e) {
@@ -412,36 +321,10 @@ const app = {
          const songNode = e.target.closest(".song:not(.active)");
    
          if (songNode || e.target.closest(".option")) {
-            var promise = new Promise(
-               function(resolve, reject) {
-                  resolve()
-               }
-            );
-            promise
-               .then(function() {
-                  _this.currentIndex = Number(songNode.dataset.index);
-               })
-               .then(function() {
-                  _this.loadCurrentSong();
-               })
-               .then(function() {
-                  _this.songActive();
-                  audio.play();
-               })
-               .then(function() {
-                  _this.loadDurationTime();
-               })
-               .then(function() {
-                  setTimeout(function () {
-                     _this.loadDurationTime();
-                  }, 500)
-               })
-               .then(function() {
-                  setTimeout(function () {
-                     _this.loadDurationTime();
-                  }, 500)
-               })
-               .catch(function() {})
+            _this.currentIndex = Number(songNode.dataset.index);
+            _this.loadCurrentSong();
+            _this.songActive();
+            audio.play();
          }
       };
    },
@@ -457,40 +340,6 @@ const app = {
       heading.textContent = this.currentSong.name;
       cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
       audio.src = this.currentSong.path;
-   },
-   loadDurationTime: function () {
-      const durationTimeText = document.querySelector('.time-duration');
-      const duration = audio.duration;
-      const durationHours = Math.floor(duration / 3600);
-      const durationMinutes = Math.floor(duration / 60) % 60; 
-      const b = duration - durationHours * 3600 - durationMinutes * 60;
-      const durationSeconds = Math.floor(b);
-
-      if(!isNaN(durationSeconds)){
-         if(durationHours > 0) {
-            if(durationMinutes > 9) {
-               if(durationSeconds > 9) {
-                  durationTimeText.innerHTML = `${durationHours}:${durationMinutes}:${durationSeconds}`;
-               }else {
-                  durationTimeText.innerHTML = `${durationHours}:${durationMinutes}:0${durationSeconds}`;
-               }
-            }else {
-               if(durationSeconds > 9) {
-                  durationTimeText.innerHTML = `${durationHours}:0${durationMinutes}:${durationSeconds}`;
-               }else {
-                  durationTimeText.innerHTML = `${durationHours}:0${durationMinutes}:0${durationSeconds}`;
-               }
-            }
-         }else if(durationMinutes > 0) {
-            if(durationSeconds < 10) {
-               durationTimeText.innerHTML = `${durationMinutes}:0${durationSeconds}`;
-            }else {
-               durationTimeText.innerHTML = `${durationMinutes}:${durationSeconds}`;
-            }
-         }else {
-            durationTimeText.innerHTML = `${durationSeconds}`;
-         }
-      }
    },
    nextSong: function () {
       this.currentIndex++
