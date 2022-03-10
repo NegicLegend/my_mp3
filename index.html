@@ -277,6 +277,9 @@
 <script>
    window.addEventListener('load', (event) => {
       document.querySelector('.load-wrap').style.display = 'none';
+      var style = document.createElement("style");
+      style.innerHTML = `body::-webkit-scrollbar {display: inline-block;}`;
+      document.head.appendChild(style);
    });
 </script>
 <script src="playerTheme.js"></script>

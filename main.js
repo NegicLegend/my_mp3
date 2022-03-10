@@ -13,8 +13,8 @@ const nextBtn = $('.btn-next');
 const prevBtn = $('.btn-prev');
 const randomBtn = $('.btn-random');
 const repeatBtn = $('.btn-repeat');
-var menu = document.querySelector('.menu');
 const nameWrap = document.querySelector('.menu-names-wrap');
+var menu = document.querySelector('.menu');
 
 const app = {
    currentIndex: 0,
@@ -151,7 +151,7 @@ const app = {
    ],
    render: function () {
       const htmls = this.songs.map((song, index) => {
-        return `
+         return `
             <div class="song ${index === this.currentIndex ? "active" : ""}" data-index="${index}">
                <div class="thumb"
                   style="background-image: url('${song.image}')">
